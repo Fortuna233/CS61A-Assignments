@@ -4,3 +4,7 @@
 **/.ok_messages
 **/.ok_storage
 **/__pycache__
+**/.ok_storage.dat
+**/.ok_storage.dir
+**/.ok_storage.bak
+**/__pycache__
