@@ -2,7 +2,7 @@
 def composite_identity(f, g):
     """
     Return a function with one parameter x that returns True if f(g(x)) is
-    equal to g(f(x)). You can assume the result of g(x) is a valid input for f
+    equal to g(f(x)). You can assume the x of g(x) is a valid input for f
     and vice versa.
 
     >>> add_one = lambda x: x + 1        # adds one to x
@@ -14,6 +14,9 @@ def composite_identity(f, g):
     False
     """
     "*** YOUR CODE HERE ***"
+    def linear_judge(x):
+        return f(g(x)) == g(f(x))
+    return linear_judge
 
 
 def sum_digits(y):
@@ -60,6 +63,14 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
+    def counter_condition(N):
+        count = 0
+        for i in range(1, N + 1):
+            if condition(N, i):
+                count += 1
+        return count
+    return counter_condition
+
 
 
 def multiple(a, b):
@@ -71,6 +82,11 @@ def multiple(a, b):
     42
     """
     "*** YOUR CODE HERE ***"
+    x = 1
+    for i in range(1, min(a, b)):
+        if a % i == 0 and b % i == 0:
+            x *= i
+    return a * b // x
 
 
 
@@ -101,4 +117,16 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
-
+    def g(n):
+        def h(x):
+            for i in range(1, n + 1):
+                if i % 3 == 1:
+                    x = f1(x)
+                elif i % 3 == 2:
+                    x =  f2(x)
+                elif i % 3 == 0:
+                    x = f3(x)
+            return x
+        return h
+    return g
+            

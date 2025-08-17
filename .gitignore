@@ -8,3 +8,4 @@
 **/.ok_storage.dir
 **/.ok_storage.bak
 **/__pycache__
+/tests/
