@@ -7,5 +7,6 @@
 **/.ok_storage.dat
 **/.ok_storage.dir
 **/.ok_storage.bak
+*ok*
 **/__pycache__
 /tests/

@@ -84,7 +84,11 @@ def interleaved_sum(n, odd_func, even_func):
     "*** YOUR CODE HERE ***"
     if n == 1:
         return odd_func(n)
-    return int(0.5 * (1 + pow(-1, n + 1)) * odd_func(n) + 0.5 * (1 + pow(-1, n)) * even_func(n) + interleaved_sum(n - 1, odd_func, even_func))
+    return int(
+        0.5 * (1 + pow(-1, n + 1)) * odd_func(n)
+        + 0.5 * (1 + pow(-1, n)) * even_func(n)
+        + interleaved_sum(n - 1, odd_func, even_func)
+    )
 
 
 def next_smaller_dollar(bill):
@@ -122,6 +126,7 @@ def count_dollars(total):
     True
     """
     "*** YOUR CODE HERE ***"
+
     def count_partitions(total, largest_bill):
         if total == 0:
             return 1
@@ -131,6 +136,7 @@ def count_dollars(total):
             with_bill = count_partitions(total - largest_bill, largest_bill)
             without_bill = count_partitions(total, next_smaller_dollar(largest_bill))
             return with_bill + without_bill
+
     return count_partitions(total, 100)
 
 
@@ -146,7 +152,7 @@ def next_larger_dollar(bill):
         return 50
     elif bill == 50:
         return 100
-    
+
 
 def count_dollars_upward(total):
     """Return the number of ways to make change using bills.
@@ -169,6 +175,7 @@ def count_dollars_upward(total):
     True
     """
     "*** YOUR CODE HERE ***"
+
     def count_partitions(total, current_bill):
         if total == 0:
             return 1
@@ -178,12 +185,14 @@ def count_dollars_upward(total):
             with_bill = count_partitions(total - current_bill, current_bill)
             without_bill = count_partitions(total, next_larger_dollar(current_bill))
             return with_bill + without_bill
+
     return count_partitions(total, 1)
 
 
 def print_move(origin, destination):
     """Print instructions to move a disk."""
     print("Move the top disk from rod", origin, "to rod", destination)
+
 
 def move_stack(n, start, end):
     """Print the moves required to move n disks on the start pole to the end
@@ -222,7 +231,9 @@ def move_stack(n, start, end):
         print_move(start, end)
         move_stack(n - 1, other, end)
 
-from operator import sub, mul
+
+from operator import mul, sub
+
 
 def make_anonymous_factorial():
     """Return the value of an expression that computes factorial.
